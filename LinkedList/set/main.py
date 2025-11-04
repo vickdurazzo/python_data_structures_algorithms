@@ -58,36 +58,63 @@ class LinkedList:
     def pop_first(self):
         if self.length == 0:
             return None
-        
-        current_head = self.head
-        self.head = self.head.next  
-        current_head.next = None
+        temp = self.head
+        self.head = self.head.next
+        temp.next = None
         self.length -= 1
-        if self.length == 0 :
+        if self.length == 0:
             self.tail = None
-        return current_head 
+        return temp
+
+    def get(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        temp = self.head
+        for _ in range(index):
+            temp = temp.next
+        return temp
+        
+    def set_value(self,index,value):
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
+        
+
+
+        
+    
 
 
 
+my_linked_list = LinkedList(11)
+my_linked_list.append(3)
+my_linked_list.append(23)
+my_linked_list.append(7)
 
-my_linked_list = LinkedList(2)
-my_linked_list.append(1)
+print('LL before set_value():')
+my_linked_list.print_list()
 
+my_linked_list.set_value(1,4)
 
-# (2) Items - Returns 2 Node
-print(my_linked_list.pop_first().value)
-# (1) Item -  Returns 1 Node
-print(my_linked_list.pop_first().value)
-# (0) Items - Returns None
-print(my_linked_list.pop_first())
+print('\nLL after set_value():')
+my_linked_list.print_list()
 
 
 
 """
     EXPECTED OUTPUT:
     ----------------
-    2
-    1
-    None
+    LL before set_value():
+    11
+    3
+    23
+    7
 
+    LL after set_value():
+    11
+    4
+    23
+    7
 """
