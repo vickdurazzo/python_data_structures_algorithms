@@ -58,19 +58,30 @@ class Graph:
 
 
 # --- teste ---
+# --- 1. Criando o Grafo ---
 meu_grafo = Graph()
-
-# Adicionando cidades (vértices)
 meu_grafo.add_vertex('São Paulo')
 meu_grafo.add_vertex('Rio de Janeiro')
 meu_grafo.add_vertex('Belo Horizonte')
 meu_grafo.add_vertex('Curitiba')
 
-# Adicionando estradas (arestas)
 meu_grafo.add_edge('São Paulo', 'Rio de Janeiro')
 meu_grafo.add_edge('São Paulo', 'Curitiba')
 meu_grafo.add_edge('São Paulo', 'Belo Horizonte')
 meu_grafo.add_edge('Rio de Janeiro', 'Belo Horizonte')
 
-# Vamos ver o resultado
+# --- 2. Estado Inicial ---
+print("### ESTADO INICIAL ###")
+meu_grafo.print_graph()
+
+# --- 3. Testando remover_aresta ---
+print("\n... Removendo aresta entre 'Rio de Janeiro' e 'Belo Horizonte' ...")
+meu_grafo.remove_edge('Rio de Janeiro', 'Belo Horizonte')
+
+# --- 4. Testando remover_vertice ---
+print("\n... Removendo vértice 'Curitiba' ...")
+meu_grafo.remove_vertex('Curitiba')
+
+# --- 5. Estado Final ---
+print("\n### ESTADO FINAL ###")
 meu_grafo.print_graph()
